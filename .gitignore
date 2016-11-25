@@ -1,2 +1,5 @@
 **/.hypothesis
 **/.cache
+
+# IDE-specific ignores
+.idea
