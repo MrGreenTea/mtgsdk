@@ -45,7 +45,7 @@ def object_from_dict(cls):
 
 def search(endpoint, cls, **kwargs):
     def _get_page(page):
-        query = build_query(endpoint, **kwargs, page=page)
+        query = build_query(endpoint, page=page, **kwargs)
         response = requests.get(query)
         response.raise_for_status()
 

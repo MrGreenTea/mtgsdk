@@ -10,11 +10,11 @@
 
 import os
 import sys
+
 from setuptools import setup, find_packages
 
-from config import __version__, __pypi_packagename__, __github_username__, __github_reponame__
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'mtgsdk'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'mtgsdki'))
+from mtgsdki.config import __version__, __pypi_packagename__, __github_username__, __github_reponame__
 
 tests_require = [
     'hypothesis'
@@ -43,14 +43,15 @@ Magic: The Gathering SDK is a python wrapper around the MTG API located at magic
         'Natural Language :: English',
         'Operating System :: Unix',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Operating System :: OS Independent',
     ],
     packages=find_packages(),
-    include_package_data=False,
+    # include_package_data=False,
     install_requires=[
-        'requests>=2.12.0', 'attrs>=16.2.0', 'toolz>=0.8.0'
-        # add your dependencies here
-        # remember to use 'package-name>=x.y.z,<x.y+1.0' notation (this way you get bugfixes)
+        'requests>=2.12.0',
+        'attrs>=16.2.0',
+        'toolz>=0.8.0'
     ],
     extras_require={
         'tests': tests_require,
