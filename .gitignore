@@ -1,5 +1,6 @@
 **/.hypothesis
 **/.cache
+**/__pycache__
 
 # IDE-specific ignores
 .idea
