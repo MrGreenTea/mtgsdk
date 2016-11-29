@@ -4,7 +4,7 @@ This is an iterator based implementation for Magic: The Gathering SDK. It is a w
 
 
 ## Requirements
-Only python3 is supported. Developed with python3.5 and also tested for python3.4
+Only python3.5+ is supported.
 
 ## Installation
 
