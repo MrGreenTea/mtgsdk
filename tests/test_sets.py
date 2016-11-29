@@ -1,4 +1,4 @@
-from mtgsdki import sets
+from mtgsdk import sets
 
 
 def test_all_sets():

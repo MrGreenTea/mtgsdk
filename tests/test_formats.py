@@ -1,4 +1,4 @@
-from mtgsdki import formats
+from mtgsdk import formats
 
 
 def test_formats():

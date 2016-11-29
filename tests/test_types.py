@@ -1,4 +1,4 @@
-from mtgsdki import types
+from mtgsdk import types
 
 
 def test_types():

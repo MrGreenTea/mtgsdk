@@ -4,7 +4,7 @@ import attr
 import requests
 from toolz import dicttoolz
 
-import mtgsdki.utils as utils
+import mtgsdk.utils as utils
 
 ENDPOINT = 'sets'
 

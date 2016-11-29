@@ -1,6 +1,6 @@
 from hypothesis import assume, given, strategies, note
 
-from mtgsdki import utils
+from mtgsdk import utils
 
 
 @given(strategies.text(min_size=1))

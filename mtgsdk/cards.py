@@ -4,7 +4,7 @@ import attr
 import requests
 import toolz
 
-import mtgsdki.utils as utils
+import mtgsdk.utils as utils
 
 ENDPOINT = 'cards'
 
@@ -17,10 +17,10 @@ class Card:
     layout = utils.no_repr_attrib()
     name = attr.ib()
     printings = utils.no_repr_attrib()
-    rarity = attr.ib()
+    rarity = utils.no_repr_attrib()
     set = attr.ib()
     set_name = utils.no_repr_attrib()
-    type = attr.ib()
+    type = utils.no_repr_attrib()
 
     cmc = attr.ib(default=0)
     colors = utils.no_repr_attrib(default=attr.Factory(list))
