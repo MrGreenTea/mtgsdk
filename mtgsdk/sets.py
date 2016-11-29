@@ -1,4 +1,5 @@
 from urllib import parse
+from typing import Iterator
 
 import attr
 import requests
@@ -27,12 +28,12 @@ class Set:
     online_only = utils.optional_attrib()
 
 
-def from_code(code: str):
+def from_code(code: str) -> Set:
     url = parse.urljoin(utils.API_URL, ENDPOINT + '/' + code)
     resp = requests.get(url)
     resp.raise_for_status()
     return Set(**dicttoolz.keymap(utils.cc_to_us, resp.json()['set']))
 
 
-def search(**kwargs):
-    yield from utils.search(ENDPOINT, Set, **kwargs)
+def search(**kwargs) -> Iterator[Set]:
+    return utils.search(ENDPOINT, Set, **kwargs)

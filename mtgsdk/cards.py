@@ -1,4 +1,5 @@
 from urllib import parse
+from typing import Iterator
 
 import attr
 import requests
@@ -56,13 +57,13 @@ class Card:
     watermark = utils.optional_attrib()
 
 
-def from_id(card_id):
+def from_id(card_id: int) -> Card:
     url = parse.urljoin(utils.API_URL, ENDPOINT + '/' + str(card_id))
     resp = requests.get(url)
     resp.raise_for_status()
     return Card(**toolz.keymap(utils.cc_to_us, resp.json()['card']))
 
 
-def search(**kwargs):
+def search(**kwargs) -> Iterator[Card]:
     # translate parameters from image_url into camelCase for magicthegatheringio
-    yield from utils.search(ENDPOINT, Card, **kwargs)
+    return utils.search(ENDPOINT, Card, **kwargs)
