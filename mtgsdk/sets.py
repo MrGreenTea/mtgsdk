@@ -11,11 +11,11 @@ ENDPOINT = 'sets'
 
 @attr.s
 class Set:
-    border = attr.ib()
+    border = utils.no_repr_attrib()
     code = attr.ib()
     name = attr.ib()
-    release_date = attr.ib()
-    type = attr.ib()
+    release_date = utils.no_repr_attrib()
+    type = utils.no_repr_attrib()
 
     block = utils.optional_attrib()
     booster = utils.optional_attrib()
