@@ -13,17 +13,17 @@ import sys
 
 from setuptools import setup, find_packages
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'mtgsdk'))
-from mtgsdk.config import __version__, __pypi_packagename__, __github_username__, __github_reponame__
+__version__ = 0.1
+__pypi_packagename__ = 'mtgsdki'
+__github_username__ = 'MrGreenTea'
+__github_reponame__ = 'mtgsdk'
+
 
 tests_require = [
     'hypothesis'
 ]
 
 url = 'https://github.com/' + __github_username__ + '/' + __github_reponame__
-download_url = "{}/tarball/{}".format(url, __version__)
-
-print(find_packages())
 
 setup(
     name=__pypi_packagename__,
