@@ -3,3 +3,6 @@
 
 # IDE-specific ignores
 .idea
+
+# testing ignores
+.tox
