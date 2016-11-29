@@ -1,7 +1,6 @@
 import itertools
 from functools import partial
 from urllib import parse
-from typing import Callable, Mapping
 
 import attr
 import requests
@@ -37,8 +36,8 @@ def build_query(endpoint, **kwargs):
     return query
 
 
-def object_from_dict(cls) -> Callable[[Mapping]]:
-    def _inner(dictionary):
+def object_from_dict(cls):
+    def _inner(dictionary) -> cls:
         return cls(**dicttoolz.keymap(cc_to_us, dictionary))
 
     return _inner
