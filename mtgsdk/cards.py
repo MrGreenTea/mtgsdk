@@ -14,7 +14,7 @@ ENDPOINT = 'cards'
 class Card:
     """represents a Card"""
     artist = utils.no_repr_attrib()
-    id = utils.no_repr_attrib()
+    id = attr.ib()
     layout = utils.no_repr_attrib()
     name = attr.ib()
     printings = utils.no_repr_attrib()
