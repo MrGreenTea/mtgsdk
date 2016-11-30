@@ -23,6 +23,6 @@ def full_changelog():
 def newest_version():
     resp = get(__URL + '?pageSize=1')
     resp.raise_for_status()
-    return Version(**resp.json()['changelog'][0])
+    return utils.object_from_dict(Version)(resp.json()['changelogs'][0])
 
 
