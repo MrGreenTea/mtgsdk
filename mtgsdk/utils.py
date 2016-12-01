@@ -36,11 +36,13 @@ def build_query(endpoint, **kwargs):
     return query
 
 
-def object_from_dict(cls):
-    def _inner(dictionary) -> cls:
-        return cls(**dicttoolz.keymap(cc_to_us, dictionary))
+def object_from_dict(cls, dictionary=None):
+    def _inner(dict_) -> cls:
+        return cls(**dicttoolz.keymap(cc_to_us, dict_))
+    if dictionary is None:
+        return _inner
 
-    return _inner
+    return _inner(dictionary)
 
 
 def search(endpoint, cls, **kwargs):

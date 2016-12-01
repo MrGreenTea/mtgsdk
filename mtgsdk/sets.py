@@ -32,7 +32,7 @@ def from_code(code: str) -> Set:
     url = parse.urljoin(utils.API_URL, ENDPOINT + '/' + code)
     resp = requests.get(url)
     resp.raise_for_status()
-    return Set(**dicttoolz.keymap(utils.cc_to_us, resp.json()['set']))
+    return utils.object_from_dict(Set, resp.json()['set'])
 
 
 def search(**kwargs) -> Iterator[Set]:

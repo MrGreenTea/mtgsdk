@@ -24,6 +24,6 @@ def full_changelog() -> Iterable[Version]:
 def newest_version() -> Version:
     resp = get(__URL + '?pageSize=1')
     resp.raise_for_status()
-    return utils.object_from_dict(Version)(resp.json()['changelogs'][0])
+    return utils.object_from_dict(Version, resp.json()['changelogs'][0])
 
 

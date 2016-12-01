@@ -1,9 +1,8 @@
-from urllib import parse
 from typing import Iterator
+from urllib import parse
 
 import attr
 import requests
-import toolz
 
 import mtgsdk.utils as utils
 
@@ -61,7 +60,7 @@ def from_id(card_id: int) -> Card:
     url = parse.urljoin(utils.API_URL, ENDPOINT + '/' + str(card_id))
     resp = requests.get(url)
     resp.raise_for_status()
-    return Card(**toolz.keymap(utils.cc_to_us, resp.json()['card']))
+    return utils.object_from_dict(Card, resp.json()['card'])
 
 
 def search(**kwargs) -> Iterator[Card]:
