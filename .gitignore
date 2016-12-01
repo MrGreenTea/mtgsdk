@@ -1,6 +1,7 @@
 **/.hypothesis
 **/.cache
 **/__pycache__
+*.egg-info
 
 # IDE-specific ignores
 .idea
