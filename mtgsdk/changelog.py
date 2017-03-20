@@ -1,29 +1,32 @@
+import re
+from typing import Iterator
+
 import attr
 from requests import get
-from typing import Iterable
 
-from mtgsdk import utils
-
-__URL = 'https://api.magicthegathering.io/v1/changelogs'
+__URL = 'https://raw.githubusercontent.com/MagicTheGathering/mtg-api/master/CHANGELOG.md'
 
 
 @attr.s
 class Version:
     details = attr.ib()
-    id = attr.ib()
     release_date = attr.ib()
     version = attr.ib()
 
 
-def full_changelog() -> Iterable[Version]:
+def full_changelog() -> Iterator[Version]:
     resp = get(__URL)
     resp.raise_for_status()
-    return map(utils.object_from_dict(Version), resp.json()['changelogs'])
+    pattern = re.compile(r'\([0-9]{4}-[0-9]{2}-[0-9]{2}\)')
+    for _v in resp.text.split('##'):
+        match = pattern.search(_v)
+        version = _v[:match.end()].strip()
+        release_date = _v[match.start()+1:match.start()-1]
+        details = _v[match.end():].strip()
+        yield Version(version=version, release_date=release_date, details=details)
 
 
 def newest_version() -> Version:
-    resp = get(__URL + '?pageSize=1')
-    resp.raise_for_status()
-    return utils.object_from_dict(Version, resp.json()['changelogs'][0])
+    return next(full_changelog())
 
 
