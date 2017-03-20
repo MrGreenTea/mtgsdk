@@ -22,8 +22,8 @@ def full_changelog() -> Iterator[Version]:
         match = pattern.search(_v)
         if match is None:
             continue
-        version = _v[:match.end()].strip()
-        release_date = _v[match.start()+1:match.start()-1]
+        version = _v[:match.start()].strip()
+        release_date = _v[match.start()+1:match.end()-1]
         details = _v[match.end():].strip()
         yield Version(version=version, release_date=release_date, details=details)
 
